@@ -17,7 +17,7 @@ function fileTree({ directoryTree, onSelectMarkdown, style }: FileTreeProps) {
     console.log('Trigger Select', keys, info);
     if (!info.node.isLeaf) return
     const result = await window.electronAPI.getFrontMatter(keys[0])
-    onSelectMarkdown(result?.attributes)
+    onSelectMarkdown(result?.data)
   };
 
   return (

@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import type { DataNode } from 'antd/es/tree';
-import frontmatter from 'front-matter'
+import { read } from 'gray-matter'
 
 
 export function readDir(dir: string): DataNode[] {
@@ -29,7 +29,6 @@ export function readDir(dir: string): DataNode[] {
 }
 
 export function readFrontMatter(markdownPath: string) {
-  const data = fs.readFileSync(markdownPath, 'utf-8')
-  const content = frontmatter(data)
+  const content = read(markdownPath)
   return content
 }

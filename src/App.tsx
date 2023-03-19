@@ -1,5 +1,6 @@
 import '@/style/App.css'
 import FileTree from '@/components/fileTree'
+import FrontmatterEdit from '@/components/frontmatterEdit'
 import { Button } from 'antd'
 import { useState } from 'react'
 
@@ -19,14 +20,14 @@ function App() {
     <div className="App">
       <Button onClick={openSelectDirDialog}>选择 markdown 文件夹</Button>
       <span>{ directoryPath }</span>
-      <section style={{ display: 'flex' }}>
+      <section className="flex">
         <FileTree
           style={{ flex: 1 }}
           directoryTree={directoryTree}
           onSelectMarkdown={setMarkdownAttributes}
         />
         <section style={{ flex: 2 }}>
-          <span>{ JSON.stringify(markdownAttributes) }</span>
+          <FrontmatterEdit markdownAttributes={markdownAttributes} />
         </section>
       </section>
     </div>

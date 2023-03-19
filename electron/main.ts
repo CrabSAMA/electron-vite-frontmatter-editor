@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, BrowserWindow, ipcMain, dialog, Menu } from 'electron'
 import path from 'path'
 import { readDir, readFrontMatter } from './util'
 
@@ -18,14 +18,17 @@ async function handleDirectoryOpen() {
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
-    title: 'Main window',
     webPreferences: {
       preload: path.join(__dirname, './preload.js')
-    }
+    },
+    width: 1000
   })
 
   // 打开调试工具
   win.webContents.openDevTools()
+
+  // 隐藏菜单
+  Menu.setApplicationMenu(null)
 
   // You can use `process.env.VITE_DEV_SERVER_URL` when the vite command is called `serve`
   if (process.env.VITE_DEV_SERVER_URL) {
