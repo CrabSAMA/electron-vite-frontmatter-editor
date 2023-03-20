@@ -28,7 +28,7 @@ app.whenReady().then(() => {
   win.webContents.openDevTools()
 
   // 隐藏菜单
-  Menu.setApplicationMenu(null)
+  win.removeMenu()
 
   // You can use `process.env.VITE_DEV_SERVER_URL` when the vite command is called `serve`
   if (process.env.VITE_DEV_SERVER_URL) {
@@ -40,7 +40,7 @@ app.whenReady().then(() => {
 
   // 监听事件
   ipcMain.handle('openSelectDirDialog', handleDirectoryOpen)
-  ipcMain.handle('getFrontMatter', (event, markdownPath) => {
+  ipcMain.handle('getFrontMatter', (event, markdownPath: string) => {
     return readFrontMatter(markdownPath)
   })
 

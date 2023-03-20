@@ -16,7 +16,7 @@ function fileTree({ directoryTree, onSelectMarkdown, style }: FileTreeProps) {
   const onSelect: DirectoryTreeProps['onSelect'] = async (keys, info) => {
     console.log('Trigger Select', keys, info);
     if (!info.node.isLeaf) return
-    const result = await window.electronAPI.getFrontMatter(keys[0])
+    const result = await window.electronAPI.getFrontMatter(keys[0] as string)
     onSelectMarkdown(result?.data)
   };
 

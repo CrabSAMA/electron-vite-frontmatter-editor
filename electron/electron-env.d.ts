@@ -1,8 +1,9 @@
 /// <reference types="vite-plugin-electron/electron-env" />
+/// <reference types="gray-matter" />
 
 interface electronAPI {
-  openSelectDirDialog: Function
-  getFrontMatter: Function
+  openSelectDirDialog: () => Promise<void>
+  getFrontMatter: (markdownPath: string) => Promise<matter.GrayMatterFile<string>>
 }
 
 interface Window {
