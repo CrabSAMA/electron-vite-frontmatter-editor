@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain, dialog, Menu } from 'electron'
 import path from 'path'
-import { readDir, readFrontMatter } from './util'
+import { readDir, readFrontMatter, writeFileSync, readFileSync } from './util'
 
 async function handleDirectoryOpen() {
   const { canceled, filePaths } = await dialog.showOpenDialog({
@@ -42,6 +42,12 @@ app.whenReady().then(() => {
   ipcMain.handle('openSelectDirDialog', handleDirectoryOpen)
   ipcMain.handle('getFrontMatter', (event, markdownPath: string) => {
     return readFrontMatter(markdownPath)
+  })
+  ipcMain.handle('writeFile', (event, path: string, content: string) => {
+    return writeFileSync(path, content)
+  })
+  ipcMain.handle('readFile', (event, path: string) => {
+    return readFileSync(path)
   })
 
   app.on('window-all-closed', () => {

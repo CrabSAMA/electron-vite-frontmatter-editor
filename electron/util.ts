@@ -28,6 +28,13 @@ export function readDir(dir: string): DataNode[] {
   return result;
 }
 
+export function readFileSync(path: string) {
+  return fs.readFileSync(path, 'utf8');
+}
+export function writeFileSync(path: string, content: string) {
+  return fs.writeFileSync(path, content);
+}
+
 export function readFrontMatter(markdownPath: string) {
   const content = read(markdownPath)
   return content

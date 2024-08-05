@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
-    "antd": "^5.3.1",
+    "antd": "^5.19.4",
     "dayjs": "^1.11.7",
     "electron-squirrel-startup": "^1.0.0",
     "gray-matter": "^4.0.3",
